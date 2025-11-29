@@ -1,0 +1,16 @@
+python: "3.10"
+
+random_seed: 42
+confidence_min: 0.6
+
+# Load real dataset instead of sample
+use_sample_data: false
+
+data:
+  sample_path: "data/sample_fb_ads.csv"
+  original_path: "data/synthetic_fb_ads_undergarments.csv"   # your real dataset
+  csv_env_var: "DATA_CSV"
+
+outputs:
+  reports_dir: "reports"
+  logs_dir: "logs"

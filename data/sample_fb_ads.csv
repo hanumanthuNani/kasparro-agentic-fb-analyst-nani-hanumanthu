@@ -1,0 +1,7 @@
+campaign_name,adset_name,date,spend,impressions,clicks,ctr,purchases,revenue,roas,creative_type,creative_message,audience_type,platform,country
+UG_Women,UG_W1,2024-01-01,120,5000,60,0.012,4,360,3.0,image,Soft cotton comfort,Women,Facebook,IN
+UG_Women,UG_W1,2024-01-02,140,5200,58,0.011,3,270,1.92,image,Soft cotton comfort,Women,Facebook,IN
+UG_Men,UG_M1,2024-01-01,200,7000,70,0.01,5,500,2.5,video,Everyday breathable,Men,Instagram,IN
+UG_Men,UG_M1,2024-01-02,220,7500,72,0.0096,4,450,2.0,video,Everyday breathable,Men,Instagram,IN
+UG_Basic,UG_B1,2024-01-01,80,4000,32,0.008,1,70,0.87,image,Budget-friendly basics,All,Facebook,IN
+UG_Basic,UG_B1,2024-01-02,90,4200,30,0.0071,1,60,0.66,image,Budget-friendly basics,All,Facebook,IN

@@ -1,0 +1,11 @@
+[2025-11-29 12:11:05,723] INFO - Logger working bro!
+[2025-11-29 12:14:13,322] INFO - Starting pipeline for query: Analyze ROAS drop
+[2025-11-29 12:14:13,322] INFO - Plan created: {'query': 'Analyze ROAS drop', 'time_window': 'auto_detect', 'steps': ['load_data', 'summarize_data', 'compute_trends', 'detect_anomalies', 'generate_hypotheses', 'evaluate_hypotheses', 'recommend_creatives'], 'metrics_of_interest': ['roas', 'ctr', 'spend', 'impressions']}
+[2025-11-29 12:14:13,378] INFO - Data summary generated.
+[2025-11-29 12:14:13,378] INFO - 5 hypotheses generated.
+[2025-11-29 12:14:13,398] INFO - Hypotheses evaluated.
+[2025-11-29 12:14:13,401] INFO - Insights written to reports\insights.json
+[2025-11-29 12:14:13,414] INFO - Creative recommendations generated.
+[2025-11-29 12:14:13,414] INFO - Creatives written to reports\creatives.json
+[2025-11-29 12:14:13,414] INFO - Report.md generated.
+[2025-11-29 12:14:13,414] INFO - Pipeline run completed successfully.

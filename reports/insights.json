@@ -1,0 +1,31 @@
+[
+  {
+    "id": "H1",
+    "description": "ROAS decreased slightly due to a minor decrease in CTR.",
+    "confidence": 0.9873417721518988,
+    "evidence": {
+      "roas_start": 2.37,
+      "roas_end": 2.4,
+      "roas_change": 0.029999999999999805
+    }
+  },
+  {
+    "id": "H2",
+    "description": "ROAS drop may be due to external factors not reflected in CTR or spend.",
+    "confidence": 1.0,
+    "evidence": {
+      "ctr_start": 0.0183,
+      "ctr_end": 0.0107,
+      "ctr_change": -0.007600000000000001
+    }
+  },
+  {
+    "id": "H3",
+    "description": "The ROAS decrease is within normal fluctuation range.",
+    "confidence": 1.0,
+    "evidence": {
+      "spend_std": 14535.119318298332,
+      "spend_mean": 5737.27493188011
+    }
+  }
+]
