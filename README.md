@@ -213,3 +213,4 @@ Uses Gemini to generate full creative packages.
 **<Hanumanthu Nani>**
 Kasparro AI Assignment
 
+Self-review updates
