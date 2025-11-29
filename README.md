@@ -1,56 +1,73 @@
-# Kasparro Agentic Facebook Performance Analyst  
-_Agentic Marketing Analytics System built by <Hanumanthu Nani>_
+# **Kasparro Agentic Facebook Performance Analyst**
+
+*Agentic Marketing Analytics System by Hanumanthu Nani*
 
 ---
 
-## 📌 Overview  
-This project implements a **multi-agent autonomous system** that analyzes Facebook Ads data, diagnoses ROAS drops, identifies performance drivers, and generates new creative ideas using **Gemini 2.0 Flash**.
+## **Overview**
 
-The system is fully modular, uses structured prompts, quantitative validation, and produces complete reports with insights + creatives.
+This repository implements a multi-agent autonomous system designed to diagnose Facebook Ads performance, identify reasons for ROAS fluctuations, and generate improved creative recommendations.
+The system follows the architecture required in the Kasparro assignment:
+Planner → Data → Insight → Evaluator → Creative → Final Report.
 
-This repo follows the **Kasparro assignment spec** exactly.
-
----
-
-## 🚀 Features
-- 🧠 **Planner Agent** — Converts user query → structured JSON plan  
-- 📊 **Data Agent** — Loads CSV, cleans data, computes trends  
-- 🔍 **Insight Agent (LLM)** — Generates hypotheses  
-- 📈 **Evaluator Agent (Python)** — Validates hypotheses with numeric checks  
-- 🎨 **Creative Generator (LLM)** — Produces full creative packages  
-- 🧩 **LLM Agent** — Gemini interface with strict JSON outputs  
-- 📂 **Reports** — report.md, insights.json, creatives.json  
-- 🔐 Configurable using YAML  
-- 🧪 Includes basic tests
+The project incorporates structured prompts, modular agents, deterministic evaluation, and a reproducible pipeline.
 
 ---
 
-## 🏗 Architecture Diagram
+## **Key Features**
+
+* **Planner Agent**
+  Converts a user query into a structured, step-wise analytic plan.
+
+* **Data Agent**
+  Loads the dataset, performs cleaning, summarizes performance, and computes trends.
+
+* **Insight Agent (LLM)**
+  Generates hypotheses grounded in the dataset summary.
+
+* **Evaluator Agent (Python)**
+  Validates each hypothesis using quantitative checks to prevent hallucination.
+
+* **Creative Generator (LLM)**
+  Generates improved creative directions for low-CTR campaigns using structured JSON.
+
+* **LLM Agent**
+  Unified interface for model communication with strict JSON enforcement.
+
+* **Reports Output**
+  Includes `report.md`, `insights.json`, and `creatives.json`.
+
+* **Reproducible and Configurable**
+  YAML-based configuration for paths, seeds, thresholds.
+
+* **Automated Tests**
+  Lightweight tests for DataAgent, EvaluatorAgent, PlannerAgent, and Pipeline.
+
+---
+
+## **Architecture**
 
 ```
-
-USER QUERY
-↓
+User Query
+      ↓
 Planner Agent (LLM)
-↓
-Data Agent → Summary
-↓
+      ↓
+Data Agent  →  Summary + Trends
+      ↓
 Insight Agent (LLM)
-↓
-Evaluator Agent (Python)
-↓
+      ↓
+Evaluator Agent (Python numeric checks)
+      ↓
 Creative Generator (LLM)
-↓
+      ↓
 Final Report (Markdown + JSON)
-
 ```
 
 ---
 
-## 📦 Repository Structure
+## **Repository Structure**
 
 ```
-
 .
 ├── config/
 │   └── config.yaml
@@ -83,133 +100,128 @@ Final Report (Markdown + JSON)
 │       ├── config_loader.py
 │       └── logging_utils.py
 ├── tests/
+│   ├── test_data_agent.py
 │   ├── test_evaluator.py
-│   └── test_data_agent.py
+│   ├── test_planner.py
+│   └── test_pipeline.py
 ├── requirements.txt
-├── Makefile OR run.sh
+├── Makefile (or run.sh)
 └── README.md
-
-````
+```
 
 ---
 
-## ⚙️ Installation
+## **Installation**
 
-### 1. Create environment
+### Create a virtual environment
+
 ```bash
 python -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
-````
+.venv\Scripts\activate   # Windows
+```
 
-### 2. Install requirements
+### Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Export Gemini API key
+### Set API key for the LLM
 
-```bash
-export GOOGLE_API_KEY="your-key"
-```
-
-Windows PowerShell:
+Windows:
 
 ```powershell
 setx GOOGLE_API_KEY "your-key"
 ```
 
+Linux/Mac:
+
+```bash
+export GOOGLE_API_KEY="your-key"
+```
+
 ---
 
-## ▶️ Running the Pipeline
+## **Running the Pipeline**
 
-#### CLI Command:
+Run the full pipeline with:
 
 ```bash
 python -m src.run "Analyze ROAS drop"
 ```
 
-Expected output:
+Outputs generated in `reports/`:
 
-* `reports/report.md`
-* `reports/insights.json`
-* `reports/creatives.json`
+* `report.md`
+* `insights.json`
+* `creatives.json`
 
 ---
 
-## 🧪 Tests
+## **Tests**
 
-Run tests with:
+Execute all tests:
 
 ```bash
-pytest
+pytest -q
 ```
 
-Example:
+Included tests:
 
-* `test_evaluator.py`
-* `test_data_agent.py`
+* PlannerAgent
+* DataAgent
+* EvaluatorAgent
+* Pipeline flow
+
+All tests are minimal, fast, and focus on functional behavior.
 
 ---
 
-## 🧠 How It Works (Short Explanation)
+## **Configuration**
 
-### 1. Planner Agent
+All pipeline behavior is controlled via:
 
-Uses Gemini to break the query into subtasks:
-
-```json
-{
-  "steps": ["load_data", "summarize_data", "compute_trends", ...]
-}
+```
+config/config.yaml
 ```
 
-### 2. Data Agent
+This includes:
 
-Loads CSV → cleans → computes last-7 vs prev-7 trends.
-
-### 3. Insight Agent
-
-Generates structured hypotheses using LLM + prompt.
-
-### 4. Evaluator Agent
-
-Pure Python numeric validator. No hallucination risk.
-
-### 5. Creative Generator
-
-Uses Gemini to generate full creative packages.
+* dataset paths
+* environment variable for original CSV
+* confidence thresholds
+* seed values
+* reports/logs output directories
 
 ---
 
-## 📝 Example Output
+## **Example Output**
 
-(Stored in `reports/`)
+Generated during pipeline execution:
 
-**insights.json**
-**creatives.json**
-**report.md**
-
----
-
-## 🏁 Reproducibility
-
-* Gemini model seeded via config
-* Consistent pipeline
-* YAML for all thresholds
-* Separate prompt files for evaluation consistency
+* `insights.json` contains validated hypotheses
+* `creatives.json` contains structured creative recommendations
+* `report.md` composes everything into a readable summary
 
 ---
 
-## 🔖 Release
+## **Reproducibility & Submission Requirements**
 
-* Tag: `v1.0`
-* PR: **self-review** summarizing design choices
+This project satisfies all Kasparro assignment requirements:
+
+* Clear multi-agent architecture
+* Planner → Insight → Evaluator → Creative loop
+* Structured prompts separated into a `prompts/` directory
+* Reproducible pipeline using deterministic evaluator
+* Lightweight automated tests
+* Version-locked requirements
+* Release tagging and PR for self-review
 
 ---
 
-## 🤝 Author
+## **Author**
 
-**<Hanumanthu Nani>**
-Kasparro AI Assignment
+**Hanumanthu Nani**
+Kasparro Applied AI Engineer Assignment
 
+---
